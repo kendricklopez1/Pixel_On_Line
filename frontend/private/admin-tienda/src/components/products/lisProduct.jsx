@@ -28,17 +28,17 @@ const ListProduct = ({ products, loading, deleteProduct, updateProduct }) => {
         </thead>
 
         <tbody>
-          {products.map((prod) => (
-            <tr key={prod._id}>
+          {products?.map((prod) => (
+            <tr key={prod?._id}>
               {/* Mostrar últimos 5 caracteres del _id como referencia */}
-              <td>{prod._id.slice(-5)}</td>
+              <td>{prod?._id.slice(-5)}</td>
 
-              {/* Mostrar datos del producto */}
-              <td>{prod.nombre}</td>
-              <td>{prod.marca}</td>
+              {/* Mostrar datos del prod?ucto */}
+              <td>{prod?.nombre}</td>
+              <td>{prod?.marca}</td>
               {/* Precio formateado a 2 decimales */}
-              <td>${prod.precio.toFixed(2)}</td>
-              <td>{prod.stock}</td>
+              <td>${prod?.precio?.toFixed(2)}</td>
+              <td>{prod?.stock}</td>
 
               {/* Botones para editar y eliminar */}
               <td>

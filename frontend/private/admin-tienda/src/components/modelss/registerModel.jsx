@@ -11,13 +11,13 @@ const RegisterModels = ({ onSubmit, selectedModel, onCancel }) => {
   const [modelName, setModelName] = useState('');
 
   // useEffect para actualizar el campo cuando cambia el modelo seleccionado
-  useEffect(() => {
+  /*useEffect(() => {
     if (selectedModel) {
       setModelName(selectedModel.Model); // Carga el nombre del modelo para editar
     } else {
       setModelName(''); // Limpia el campo al no tener modelo seleccionado
     }
-  }, [selectedModel]);
+  }, [selectedModel]);*/
 
   // Función que maneja el submit del formulario
   const handleSubmit = (e) => {

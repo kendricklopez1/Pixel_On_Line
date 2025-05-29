@@ -17,9 +17,9 @@ const Models = () => {
     }
   };
 
-  useEffect(() => {
+ /* useEffect(() => {
     fetchModels();
-  }, []);
+  }, []); */
 
   const handleSubmit = async (modelData) => {
     try {

@@ -14,4 +14,4 @@ const modelsSchema = new Schema(
   }
 );
 
-export default model("Models", modelsSchema);
+export default model("Model", modelsSchema);

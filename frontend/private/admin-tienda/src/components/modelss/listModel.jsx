@@ -15,9 +15,9 @@ const ModelsContainer = () => {
     }
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetchModels();
-  }, []);
+  }, []);*/
 
   // Función para editar modelo (placeholder)
   const handleEdit = (model) => {
