@@ -9,8 +9,9 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  width: 140%;
-  align-items: center; /* Centra los elementos verticalmente en el contenedor */
+  width: 100%;         /* Ancho al 100% */
+  max-width: 120000px;   /* Máximo ancho para no expandirse demasiado */
+  align-items: center; /* Centra elementos verticalmente */
 }
 
 .home-content {
@@ -96,9 +97,6 @@
   justify-content: center;
   margin-top: 20px;
   flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: flex-start;
   width: 100%;
 }

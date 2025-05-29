@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "../pages/Styles.css/Nav.css"; 
 
 const NavPriv = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,46 +22,33 @@ const NavPriv = () => {
   };
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full bg-black text-white shadow-md border-b-4 border-black z-50"
-      style={{ fontFamily: "Poppins, sans-serif" }}
-    >
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center text-lg">
+    <nav>
+      <div className="container">
         {/* Logo */}
-        <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-          Panel Administrativo
-        </div>
+        <div className="logo">Panel Administrativo</div>
 
         {/* Botón hamburguesa */}
-        <div className="lg:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
+        <button
+          className="menu-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
 
         {/* Menú de navegación */}
-        <ul
-          className={`lg:flex lg:space-x-6 lg:items-center font-medium transition-all duration-300 ease-in-out ${
-            menuOpen
-              ? "absolute top-20 left-0 w-full bg-black px-6 py-4 space-y-4 flex flex-col z-50"
-              : "hidden lg:flex"
-          }`}
-        >
-          <li><Link to="/models" className="nav-link">Models</Link></li>
-          <li><Link to="/inicio" className="nav-link">Inicio</Link></li>
-          <li><Link to="/productos" className="nav-link">Productos</Link></li>
-          <li><Link to="/pedidos" className="nav-link">Pedidos</Link></li>
-          <li><Link to="/clientes" className="nav-link">Clientes</Link></li>
-          <li><Link to="/mensajes" className="nav-link">Mensajes</Link></li>
-          <li><Link to="/provedores" className="nav-link">Proveedores</Link></li>
-          <li><Link to="/mark" className="nav-link">Marcas</Link></li>
+        <ul className={menuOpen ? "open" : ""}>
+          <li><Link to="/models" onClick={() => setMenuOpen(false)}>Models</Link></li>
+          <li><Link to="/inicio" onClick={() => setMenuOpen(false)}>Inicio</Link></li>
+          <li><Link to="/productos" onClick={() => setMenuOpen(false)}>Productos</Link></li>
+          <li><Link to="/pedidos" onClick={() => setMenuOpen(false)}>Pedidos</Link></li>
+          <li><Link to="/clientes" onClick={() => setMenuOpen(false)}>Clientes</Link></li>
+          <li><Link to="/mensajes" onClick={() => setMenuOpen(false)}>Mensajes</Link></li>
+          <li><Link to="/provedores" onClick={() => setMenuOpen(false)}>Proveedores</Link></li>
+          <li><Link to="/mark" onClick={() => setMenuOpen(false)}>Marcas</Link></li>
 
-          {/* Botón de logout */}
           <li>
-            <button
-              onClick={handleLogout}
-              className="text-red-500 hover:text-red-300 transition duration-200"
-            >
+            <button className="logout-btn" onClick={handleLogout}>
               Cerrar sesión
             </button>
           </li>

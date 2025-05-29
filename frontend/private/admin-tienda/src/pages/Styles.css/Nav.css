@@ -1,0 +1,92 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  border-bottom: 4px solid #000;
+  font-family: 'Poppins', sans-serif;
+  z-index: 50;
+}
+
+nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+nav .logo {
+  font-weight: 700;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav .menu-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  display: none; /* oculto por defecto */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #4caf50;
+}
+
+nav ul li button.logout-btn {
+  background: none;
+  border: none;
+  color: #f87171; /* rojo suave */
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li button.logout-btn:hover {
+  color: #fca5a5;
+}
+
+/* Responsive: mostrar botón hamburguesa en móviles y menú vertical */
+@media (max-width: 768px) {
+  nav .menu-button {
+    display: block;
+  }
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: black;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 24px;
+    display: none;
+  }
+  nav ul.open {
+    display: flex;
+  }
+}

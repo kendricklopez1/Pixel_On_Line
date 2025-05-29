@@ -95,7 +95,7 @@ body {
   letter-spacing: 0.04em;
 }
 
-/* Editar - verde */
+/* Botón Editar */
 .btn-edit {
   background-color: #33cc33;
   box-shadow: 0 3px 8px #2db02daa;
@@ -106,7 +106,7 @@ body {
   box-shadow: 0 4px 14px #27a127bb;
 }
 
-/* Eliminar - rojo */
+/* Botón Eliminar */
 .btn-delete {
   background-color: #cc3333;
   box-shadow: 0 3px 8px #b02d2daa;
@@ -118,7 +118,7 @@ body {
   box-shadow: 0 4px 14px #a12727bb;
 }
 
-/* Cancelar - gris */
+/* Botón Cancelar */
 .btn-cancel {
   background-color: #777777;
   box-shadow: 0 3px 6px #555555aa;
@@ -131,7 +131,7 @@ body {
   box-shadow: 0 4px 10px #5c5c5cbb;
 }
 
-/* Formulario */
+/* Formulario dentro de la tarjeta al editar */
 .form-client {
   display: flex;
   flex-wrap: wrap;
@@ -140,7 +140,7 @@ body {
   justify-content: space-between;
 }
 
-/* Inputs y select */
+/* Inputs */
 .form-client input {
   flex: 1 1 220px;
   background: #1f1f1f;
@@ -164,7 +164,7 @@ body {
   box-shadow: 0 0 10px #33ff77cc;
 }
 
-/* Botón guardar */
+/* Botón Guardar */
 .btn-save {
   flex-basis: 100%;
   max-width: 180px;
@@ -186,6 +186,7 @@ body {
   background-color: #27a127;
   box-shadow: 0 6px 20px #27a127dd;
 }
+
 
 /* Responsive para pantallas pequeñas */
 @media (max-width: 600px) {

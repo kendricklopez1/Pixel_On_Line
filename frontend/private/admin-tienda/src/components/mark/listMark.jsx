@@ -1,10 +1,13 @@
-import MarkCard from './markCard';
-
-const ListMark = ({ marks, onDelete, onEdit }) => {
+import "../../pages/Styles.css/Mark.css";
+const ListMark = ({ marks, onEdit, onDelete }) => {
   return (
-    <div className="list-container">
-      {marks.map((mark) => (
-        <MarkCard key={mark._id} mark={mark} onDelete={onDelete} onEdit={onEdit} />
+    <div className="list-mark">
+      {marks.map(mark => (
+        <div key={mark._id} className="mark-card">
+          <p>{mark.Mark}</p>
+          <button onClick={() => onEdit(mark)}>Editar</button>
+          <button onClick={() => onDelete(mark._id)}>Eliminar</button>
+        </div>
       ))}
     </div>
   );

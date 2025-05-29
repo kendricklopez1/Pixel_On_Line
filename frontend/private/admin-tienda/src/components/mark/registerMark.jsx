@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import "../../pages/Styles.css/Mark.css";
 
 const RegisterMark = ({ selectedMark, onSubmit, onCancel }) => {
   const [mark, setMark] = useState('');
 
-  // Cuando cambie selectedMark, actualizo el input
   useEffect(() => {
     if (selectedMark) {
       setMark(selectedMark.Mark);
@@ -20,12 +20,11 @@ const RegisterMark = ({ selectedMark, onSubmit, onCancel }) => {
       return;
     }
 
-    // Enviar datos con _id si es edición
-    const markData = selectedMark ? { ...selectedMark, Mark: mark } : { Mark: mark };
+    const markData = selectedMark
+      ? { ...selectedMark, Mark: mark }
+      : { Mark: mark };
 
     await onSubmit(markData);
-
-    // Limpiar después de enviar
     setMark('');
   };
 
@@ -42,7 +41,11 @@ const RegisterMark = ({ selectedMark, onSubmit, onCancel }) => {
         {selectedMark ? 'Actualizar Marca' : 'Agregar Marca'}
       </button>
       {selectedMark && (
-        <button type="button" className="btn-cancel" onClick={onCancel}>
+        <button
+          type="button"
+          className="btn-cancel"
+          onClick={onCancel}
+        >
           Cancelar
         </button>
       )}
