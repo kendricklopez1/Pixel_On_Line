@@ -1,0 +1,115 @@
+/* Fondo animado */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #1d1e2c, #25273c, #202230, #1c1d25);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #00fff2;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px #00fff2;
+}
+
+/* Grupos de entrada */
+.input-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-group input:focus {
+  border: 2px solid #00fff2;
+  background-color: rgba(0, 255, 255, 0.05);
+  box-shadow: 0 0 15px #00fff2;
+}
+
+/* Botón */
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right, #00fff2, #00e6cb);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px #00fff2;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #00e6cb, #00fff2);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 20px #00fff2;
+}
+
+/* Opciones */
+.login-options {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.login-options a {
+  color: #00fff2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-options a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00fff2;
+}

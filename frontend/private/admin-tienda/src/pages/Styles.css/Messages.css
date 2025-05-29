@@ -1,0 +1,160 @@
+/* Messages.css */
+
+/* Contenedor principal */
+.messages-container {
+  padding: 5rem 1.5rem 1.5rem; /* padding-top de 5rem para dejar espacio al menú */
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .messages-container {
+    padding: 6rem 2.5rem 2.5rem;
+  }
+}
+
+/* Título principal */
+.messages-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+}
+
+/* Panel de mensajes */
+.messages-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .messages-panel {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* Lista de mensajes */
+.message-list {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-list-header {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.message-list-content {
+  overflow-y: auto;
+  flex-grow: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.message-item {
+  padding: 1rem;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.message-item:hover {
+  background-color: #f9fafb;
+}
+
+.message-subject {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.message-preview {
+  font-size: 0.875rem;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Vista previa del mensaje */
+.message-preview-container {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.preview-details p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.25rem;
+}
+
+.preview-message {
+  font-size: 0.95rem;
+  color: #111827;
+  margin-top: 0.75rem;
+}
+
+/* Área de respuesta */
+.reply-textarea {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  resize: vertical;
+  min-height: 8rem;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.reply-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Botón de enviar */
+.send-reply-button {
+  margin-top: 1rem;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.send-reply-button:hover {
+  background-color: #1d4ed8;
+}

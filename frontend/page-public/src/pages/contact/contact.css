@@ -1,0 +1,158 @@
+/* Fondo animado con gradiente animado */
+.contact-fondo-animado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+  z-index: -1;
+}
+
+/* Contenedor principal */
+.contact-tienda-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  color: #00ff88;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Título principal */
+.contact-titulo-tienda {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  animation: contact-glow 2s ease-in-out infinite alternate;
+}
+
+/* Formulario */
+.contact-formulario-contacto {
+  background-color: rgba(10, 10, 10, 0.8);
+  border: 2px solid #00ff88;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+  animation: contact-fadeIn 1s ease forwards;
+}
+
+.contact-campo-formulario {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #00ffaa;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #111;
+  color: #00ffcc;
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc;
+}
+
+/* Botón */
+.contact-btn {
+  background-color: #00ff88;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+}
+
+.contact-btn:hover {
+  background-color: #00ffaa;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffaa, 0 0 40px #00ffaa;
+}
+
+/* Modal de éxito */
+.contact-modal-exito {
+  margin-top: 2rem;
+  background-color: #111;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid #00ffaa;
+  color: #00ffaa;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ffaa;
+  animation: contact-slideUp 0.6s ease, contact-fadeOut 0.5s ease 2.5s forwards;
+}
+
+/* Animaciones */
+@keyframes contact-glow {
+  from {
+    text-shadow: 0 0 10px #00ffaa;
+  }
+  to {
+    text-shadow: 0 0 20px #00ffaa, 0 0 30px #00ffaa;
+  }
+}
+
+@keyframes contact-fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes contact-slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes contact-fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+  .contact-tienda-container {
+    padding: 1rem;
+  }
+
+  .contact-titulo-tienda {
+    font-size: 2rem;
+  }
+
+  .contact-formulario-contacto {
+    padding: 1.2rem;
+  }
+}

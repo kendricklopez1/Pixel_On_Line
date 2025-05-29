@@ -1,0 +1,285 @@
+/* Estilos generales para la página */
+.home-container {
+    background-color: #121212;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Carrusel */
+.slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* Alto fijo para asegurar que todas las diapositivas tengan el mismo tamaño */
+}
+
+/* Contenedor del carrusel */
+.carousel-container {
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Estilo para todas las diapositivas tipo bienvenida */
+.welcome-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    padding: 50px 20px;
+    flex-direction: column;
+    height: 100%; /* Asegura que la diapositiva ocupe todo el alto disponible */
+    width: 100%; /* Asegura que la diapositiva ocupe todo el ancho */
+}
+
+/* Centrar el contenido del carrusel */
+.welcome-content {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto; /* Centra el contenido en el contenedor */
+}
+
+.neon-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+.welcome-message {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f7f7f7;
+    margin-bottom: 10px;
+}
+
+.info-description {
+    font-size: 1.2rem;
+    color: #f1f1f1;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.slogan {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #ffcb00;
+    font-weight: bold;
+}
+
+/* Estilos para la sección de misión, visión, objetivos */
+.company-section {
+    padding: 50px 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    max-width: 1200px; /* Limita el ancho */
+    margin: 0 auto; /* Centra la sección */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; /* Aumento el espacio entre los cuadros */
+}
+
+/* Cuadro principal con efecto neón */
+.company-block {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.6); /* Efecto neón naranja */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #121212;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
+}
+
+/* Animación para que el contenido aparezca al hacer scroll */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos con neón naranja */
+.company-block h3 {
+    font-size: 2.5rem;
+    color: #ffcb00;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffcb00, 0 0 20px #ffcb00;
+}
+
+/* Descripción y párrafos */
+.company-block p {
+    font-size: 1.2rem;
+    color: #f7f7f7;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover en los cuadros */
+.company-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.9); /* Aumenta el efecto neón */
+}
+
+/* Estilo para la lista de objetivos */
+.company-block ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1.1rem;
+}
+
+.company-block ul li {
+    margin-bottom: 10px;
+    color: #f7f7f7;
+}
+
+/* Alternar la posición de los cuadros */
+.company-block.left {
+    grid-column: 1;
+}
+
+.company-block.right {
+    grid-column: 2;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .company-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 15px;
+    }
+
+    .company-block.left,
+    .company-block.right {
+        grid-column: auto;
+    }
+
+    .neon-title {
+        font-size: 2rem;
+    }
+
+    .welcome-message {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .info-description {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .slogan {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .slick-slide {
+        height: auto !important; /* Permitir altura automática */
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .carousel-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .welcome-slide {
+        height: auto !important;
+        padding: 30px 15px;
+        flex-direction: column;
+    }
+
+    .welcome-content {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .slick-slide {
+        height: auto !important;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .carousel-container,
+    .carousel-slide,
+    .welcome-slide {
+        width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+
+    .welcome-content {
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .neon-title {
+        font-size: 1.3rem;
+        word-break: break-word;
+    }
+
+    .welcome-message,
+    .info-description,
+    .slogan {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .company-section {
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .company-block {
+        padding: 15px;
+    }
+
+    .company-block h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .company-block p,
+    .company-block ul {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    /* Oculta flechas si es necesario */
+    .slick-prev,
+    .slick-next {
+        display: none !important;
+    }
+
+    /* Evita scroll horizontal */
+    body {
+        overflow-x: hidden;
+    }
+}
+
+
