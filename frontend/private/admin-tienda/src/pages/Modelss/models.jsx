@@ -1,58 +1,30 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import ListModels from '../../components/modelss/listModel';
-import RegisterModels from '../../components/modelss/registerModel';
-import '../Styles.css/Models.css';
+import useDataModel from "../../components/modelss/hook/useDataModel";
+import RegisterModel from "../../components/modelss/RegisterModel";
+import ListModel from "../../components/modelss/ListModel";
 
 const Models = () => {
-  const [models, setModels] = useState([]);
-  const [selectedModel, setSelectedModel] = useState(null);
-
-  const fetchModels = async () => {
-    try {
-      const res = await axios.get('http://localhost:4000/api/models');
-      setModels(res.data);
-    } catch (err) {
-      console.error('Error al cargar los modelos:', err);
-    }
-  };
-
- /* useEffect(() => {
-    fetchModels();
-  }, []); */
-
-  const handleSubmit = async (modelData) => {
-    try {
-      if (modelData._id) {
-        await axios.put(`http://localhost:4000/api/models/${modelData._id}`, modelData);
-      } else {
-        await axios.post('http://localhost:4000/api/models', modelData);
-      }
-      fetchModels();
-      setSelectedModel(null);
-    } catch (err) {
-      console.error('Error al guardar modelo:', err);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:4000/api/models/${id}`);
-      fetchModels();
-    } catch (err) {
-      console.error('Error al eliminar modelo:', err);
-    }
-  };
+  const {
+    models,
+    selectedModel,
+    handleSubmit,
+    handleDelete,
+    handleEdit,
+    handleCancel,
+  } = useDataModel();
 
   return (
-    <div className="product-management-container">
-      <h1 className="product-management-title">Gestión de Modelos</h1>
-      <RegisterModels
-        onSubmit={handleSubmit}
+    <div className="container-model">
+      <h2>Gestión de Modelos</h2>
+      <RegisterModel
         selectedModel={selectedModel}
-        onCancel={() => setSelectedModel(null)}
+        onSubmit={handleSubmit}
+        onCancel={handleCancel}
       />
-      <ListModels models={models} onEdit={setSelectedModel} onDelete={handleDelete} />
+      <ListModel
+        models={models}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
     </div>
   );
 };
