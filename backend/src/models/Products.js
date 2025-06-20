@@ -33,6 +33,9 @@ const productsSchema = new Schema({
     Suppliers_id: {
         type: Schema.Types.ObjectId,
         ref: 'suppliers' // Referencia al modelo de proveedores
+    },
+    Image: {
+        type: String // URL de la imagen del producto, no obligatoria
     }
 }, { 
     timestamps: true, // Agrega createdAt y updatedAt automáticamente

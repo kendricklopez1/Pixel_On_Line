@@ -1,18 +1,16 @@
 import express from "express";
 import productsController from "../controllers/productsController.js";
+import multer from "multer";
 
-// Crear el router para manejar las rutas relacionadas con los productos
 const router = express.Router();
+const upload = multer({ dest: "public/" });
 
-// Ruta principal: obtener todos los productos o crear uno nuevo
 router.route("/")
-    .get(productsController.getProducts)         // Obtener todos los productos
-    .post(productsController.createProducts);    // Crear un nuevo producto
+    .get(productsController.getProducts)
+    .post(upload.single("Image"), productsController.createProducts);
 
-// Ruta con ID: actualizar o eliminar un producto específico
 router.route("/:id")
-    .put(productsController.updateProducts)      // Actualizar producto por ID
-    .delete(productsController.deleteProducts);  // Eliminar producto por ID
+    .put(upload.single("Image"), productsController.updateProducts)
+    .delete(productsController.deleteProducts);
 
-// Exportación del router para usarlo en la app principal
 export default router;
