@@ -13,7 +13,6 @@ const productsSchema = new Schema({
     },
     Stock: {
         type: Number,
-        required: true, // La cantidad en stock es obligatoria
         default: 0      // El valor predeterminado es 0
     },
     Year: {
@@ -24,20 +23,20 @@ const productsSchema = new Schema({
     },
     Mark_id: {
         type: Schema.Types.ObjectId,
-        ref: 'Mark' // Referencia al modelo de marca
+        ref: 'Mark' // ✅ Referencia al modelo de marca
     },
     Model_id: {
         type: Schema.Types.ObjectId,
-        ref: 'Model' // Referencia al modelo de modelo
+        ref: 'Model' // ✅ Referencia al modelo de modelo
     },
     Suppliers_id: {
         type: Schema.Types.ObjectId,
-        ref: 'suppliers' // Referencia al modelo de proveedores
+        ref: 'suppliers' // ✅ Referencia al modelo de proveedores (verificar nombre exacto en tu base de datos)
     },
     Image: {
         type: String // URL de la imagen del producto, no obligatoria
     }
-}, { 
+}, {
     timestamps: true, // Agrega createdAt y updatedAt automáticamente
     strict: false     // Permite almacenar campos no definidos en el esquema
 });

@@ -8,7 +8,7 @@ const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancel
   const [form, setForm] = useState({
     Name: "",
     Price: "",
-    Discount: "",
+    Stock: "",
     Image: "",
     Mark_id: "",
     Model_id: "",
@@ -19,12 +19,28 @@ const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancel
   const { models } = useDataModels();
   const { suppliers } = useDataSuppliers();
 
+  // 👈 LOGS PARA DEBUG - Puedes removerlos después
+  console.log("🔍 Marcas:", marks);
+  console.log("🔍 Modelos:", models);
+  console.log("🔍 Proveedores:", suppliers);
+
+  // Mostrar estructura del primer elemento si hay datos
+  if (suppliers?.length > 0) {
+    console.log("Estructura del primer proveedor:", suppliers[0]);
+  }
+  if (marks?.length > 0) {
+    console.log("Estructura de la primera marca:", marks[0]);
+  }
+  if (models?.length > 0) {
+    console.log("Estructura del primer modelo:", models[0]);
+  }
+
   useEffect(() => {
     if (editingProduct) {
       setForm({
         Name: editingProduct.Name || "",
         Price: editingProduct.Price || "",
-        Discount: editingProduct.Discount || "",
+        Stock: editingProduct.Stock || "",
         Image: editingProduct.Image || "",
         Mark_id: editingProduct.Mark_id?._id || editingProduct.Mark_id || "",
         Model_id: editingProduct.Model_id?._id || editingProduct.Model_id || "",
@@ -34,7 +50,7 @@ const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancel
       setForm({
         Name: "",
         Price: "",
-        Discount: "",
+        Stock: "",
         Image: "",
         Mark_id: "",
         Model_id: "",
@@ -50,6 +66,10 @@ const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancel
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Debug: mostrar qué datos se están enviando
+    console.log("📤 Datos del formulario a enviar:", form);
+    
     if (editingProduct) {
       updateProduct(editingProduct._id, form);
     } else {
@@ -58,7 +78,7 @@ const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancel
     setForm({
       Name: "",
       Price: "",
-      Discount: "",
+      Stock: "",
       Image: "",
       Mark_id: "",
       Model_id: "",
@@ -69,34 +89,81 @@ const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancel
 
   return (
     <form onSubmit={handleSubmit} className="form-products">
-      <input type="text" name="Name" value={form.Name} onChange={handleChange} placeholder="Nombre" required />
-      <input type="number" name="Price" value={form.Price} onChange={handleChange} placeholder="Precio" required />
-      <input type="number" name="Discount" value={form.Discount} onChange={handleChange} placeholder="Descuento" required />
-      <input type="text" name="Image" value={form.Image} onChange={handleChange} placeholder="URL Imagen" required />
+      <input 
+        type="text" 
+        name="Name" 
+        value={form.Name} 
+        onChange={handleChange} 
+        placeholder="Nombre" 
+        required 
+      />
+      
+      <input 
+        type="number" 
+        name="Price" 
+        value={form.Price} 
+        onChange={handleChange} 
+        placeholder="Precio" 
+        required 
+      />
+      
+      <input 
+        type="number" 
+        name="Stock" 
+        value={form.Stock} 
+        onChange={handleChange} 
+        placeholder="Stock" 
+        required 
+      />
+      
+      <input 
+        type="text" 
+        name="Image" 
+        value={form.Image} 
+        onChange={handleChange} 
+        placeholder="URL de la imagen (ej: https://...)" 
+        required 
+      />
 
+      {/* SELECT MARCAS - CORREGIDO */}
       <select name="Mark_id" value={form.Mark_id} onChange={handleChange} required>
         <option value="">Seleccionar Marca</option>
         {marks?.map((mark) => (
-          <option key={mark._id} value={mark._id}>{mark.name}</option>
+          <option key={mark._id} value={mark._id}>
+            {mark.Mark}
+          </option>
         ))}
       </select>
 
+      {/* SELECT MODELOS - CORREGIDO */}
       <select name="Model_id" value={form.Model_id} onChange={handleChange} required>
         <option value="">Seleccionar Modelo</option>
         {models?.map((model) => (
-          <option key={model._id} value={model._id}>{model.name}</option>
+          <option key={model._id} value={model._id}>
+            {model.name || model.Name || model.Model}
+          </option>
         ))}
       </select>
 
+      {/* SELECT PROVEEDORES - CORREGIDO */}
       <select name="Suppliers_id" value={form.Suppliers_id} onChange={handleChange} required>
         <option value="">Seleccionar Proveedor</option>
         {suppliers?.map((supplier) => (
-          <option key={supplier._id} value={supplier._id}>{supplier.name}</option>
+          <option key={supplier._id} value={supplier._id}>
+            {supplier.Name}
+          </option>
         ))}
       </select>
 
-      <button type="submit">{editingProduct ? "Actualizar" : "Agregar"}</button>
-      {editingProduct && <button type="button" onClick={cancelEdit}>Cancelar</button>}
+      <button type="submit">
+        {editingProduct ? "Actualizar" : "Agregar"}
+      </button>
+      
+      {editingProduct && (
+        <button type="button" onClick={cancelEdit}>
+          Cancelar
+        </button>
+      )}
     </form>
   );
 };

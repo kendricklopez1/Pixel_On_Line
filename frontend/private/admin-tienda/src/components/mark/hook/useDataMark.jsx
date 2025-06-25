@@ -10,10 +10,20 @@ const useDataMark = () => {
 
   const fetchMarks = async () => {
     try {
+      console.log("🚀 Intentando obtener marcas de:", API_URL);
       const res = await axios.get(API_URL);
+      console.log("✅ Respuesta de marcas:", res.data);
+      console.log("📊 Cantidad de marcas:", res.data.length);
+      
+      // Mostrar estructura de la primera marca si existe
+      if (res.data.length > 0) {
+        console.log("🔍 Estructura de la primera marca:", res.data[0]);
+      }
+      
       setMarks(res.data);
     } catch (error) {
-      console.error("Error al cargar las marcas:", error);
+      console.error("❌ Error al cargar las marcas:", error);
+      console.error("❌ Error details:", error.response?.data);
       toast.error("Error al cargar las marcas");
     }
   };
