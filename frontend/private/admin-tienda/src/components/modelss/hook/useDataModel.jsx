@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+const API_URL = "http://localhost:4000/api/models";
+
 const useDataModel = () => {
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState(null);
 
   const getModels = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/models");
+      const res = await axios.get(API_URL);
       setModels(res.data);
     } catch (error) {
       console.error("Error al obtener los modelos:", error);
@@ -16,17 +18,13 @@ const useDataModel = () => {
     }
   };
 
-  useEffect(() => {
-    getModels();
-  }, []);
-
   const handleSubmit = async (data) => {
     try {
       if (selectedModel) {
-        await axios.put(`http://localhost:4000/api/models/${data._id}`, data);
+        await axios.put(`${API_URL}/${data._id}`, data);
         toast.success("Modelo actualizado");
       } else {
-        await axios.post("http://localhost:4000/api/models", data);
+        await axios.post(API_URL, data);
         toast.success("Modelo agregado");
       }
       getModels();
@@ -39,7 +37,7 @@ const useDataModel = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/models/${id}`);
+      await axios.delete(`${API_URL}/${id}`);
       toast.success("Modelo eliminado");
       getModels();
     } catch (error) {
@@ -55,6 +53,10 @@ const useDataModel = () => {
   const handleCancel = () => {
     setSelectedModel(null);
   };
+
+  useEffect(() => {
+    getModels();
+  }, []);
 
   return {
     models,

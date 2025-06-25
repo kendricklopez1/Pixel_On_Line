@@ -4,7 +4,7 @@ import useDataModels from "../../components/modelss/hook/useDataModel";
 import useDataSuppliers from "../../components/suppliers/hook/useDataSupplier";
 import "../../pages/Styles.css/Product-management.css";
 
-const RegisterProducts = ({ onAddProduct, onEditProduct, editingProduct, cancelEdit }) => {
+const RegisterProducts = ({ createProduct, updateProduct, editingProduct, cancelEdit }) => {
   const [form, setForm] = useState({
     Name: "",
     Price: "",
@@ -51,9 +51,9 @@ const RegisterProducts = ({ onAddProduct, onEditProduct, editingProduct, cancelE
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editingProduct) {
-      onEditProduct(editingProduct._id, form);
+      updateProduct(editingProduct._id, form);
     } else {
-      onAddProduct(form);
+      createProduct(form);
     }
     setForm({
       Name: "",
@@ -64,6 +64,7 @@ const RegisterProducts = ({ onAddProduct, onEditProduct, editingProduct, cancelE
       Model_id: "",
       Suppliers_id: ""
     });
+    if (editingProduct) cancelEdit();
   };
 
   return (
@@ -75,21 +76,21 @@ const RegisterProducts = ({ onAddProduct, onEditProduct, editingProduct, cancelE
 
       <select name="Mark_id" value={form.Mark_id} onChange={handleChange} required>
         <option value="">Seleccionar Marca</option>
-        {marks.map((mark) => (
+        {marks?.map((mark) => (
           <option key={mark._id} value={mark._id}>{mark.name}</option>
         ))}
       </select>
 
       <select name="Model_id" value={form.Model_id} onChange={handleChange} required>
         <option value="">Seleccionar Modelo</option>
-        {models.map((model) => (
+        {models?.map((model) => (
           <option key={model._id} value={model._id}>{model.name}</option>
         ))}
       </select>
 
       <select name="Suppliers_id" value={form.Suppliers_id} onChange={handleChange} required>
         <option value="">Seleccionar Proveedor</option>
-        {suppliers.map((supplier) => (
+        {suppliers?.map((supplier) => (
           <option key={supplier._id} value={supplier._id}>{supplier.name}</option>
         ))}
       </select>
